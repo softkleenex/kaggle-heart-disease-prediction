@@ -19,13 +19,11 @@ def main():
     print(f"Loading OOFs from {args.oof_dir}...")
 
     # 1. Load Data
-    # Load all available OOFs dynamically
     model_names = ['lgbm', 'xgb', 'catboost', 'nn']
     oofs = []
     tests = []
     loaded_models = []
 
-    # Ensure consistent length (Train size)
     train_df = pd.read_csv(args.train_path)
     y_true = train_df['Heart Disease'].map({'Absence': 0, 'Presence': 1}).values
     n_train = len(y_true)
@@ -38,7 +36,6 @@ def main():
             oof = np.load(oof_path)
             test = np.load(test_path)
             
-            # Size check & Fix
             if len(oof) > n_train:
                 oof = oof[:n_train]
             
@@ -55,34 +52,29 @@ def main():
     if not oofs:
         raise ValueError("No valid OOF files found!")
 
-    oofs = np.array(oofs).T # (N_samples, N_models)
+    oofs = np.array(oofs).T
     tests = np.array(tests).T
 
     # 2. Optimization Objective
     def auc_func(weights):
-        # Weights must be positive and sum to 1 (handled by constraints)
         final_oof = np.dot(oofs, weights)
-        return -roc_auc_score(y_true, final_oof) # Minimize negative AUC
+        return -roc_auc_score(y_true, final_oof)
 
-    # Constraints & Bounds
-    cons = ({'type': 'eq', 'fun': lambda w: 1 - np.sum(w)}) # Sum of weights = 1
-    bounds = [(0, 1)] * len(loaded_models) # Each weight between 0 and 1
+    cons = ({'type': 'eq', 'fun': lambda w: 1 - np.sum(w)})
+    bounds = [(0, 1)] * len(loaded_models)
     init_weights = np.ones(len(loaded_models)) / len(loaded_models)
 
     # 3. Optimize (SLSQP)
-    print("
-Starting Optimization (SLSQP)...")
+    print("\nStarting Optimization (SLSQP)...")
     result = minimize(auc_func, init_weights, method='SLSQP', bounds=bounds, constraints=cons)
 
     best_weights = result.x
     best_auc = -result.fun
 
-    print("
---- Optimized Weights ---")
+    print("\n--- Optimized Weights ---")
     for name, w in zip(loaded_models, best_weights):
         print(f"{name}: {w:.4f}")
-    print(f"
-Final Optimized AUC: {best_auc:.5f}")
+    print(f"\nFinal Optimized AUC: {best_auc:.5f}")
 
     # 4. Create Submission
     final_test_preds = np.dot(tests, best_weights)
