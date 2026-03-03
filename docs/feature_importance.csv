@@ -1,0 +1,21 @@
+feature,importance
+Max HR,752
+Cholesterol,312
+Number of vessels fluro,261
+MaxHR_Age_Ratio,252
+Sex_CPT,219
+ST depression,185
+Exercise angina,176
+Age,156
+Slope of ST,148
+BP,123
+Thallium,112
+Chest pain type,106
+EKG results,92
+ST_MaxHR_Interaction,53
+BP_Age_Product,42
+Sex,6
+FBS over 120,5
+Max HR_diff_mean,0
+BP_diff_mean,0
+Cholesterol_diff_mean,0

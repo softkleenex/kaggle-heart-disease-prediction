@@ -1,0 +1,17 @@
+{
+  "id": "softkleenex/runner-pseudo-r2",
+  "title": "Runner Pseudo R2",
+  "code_file": "runner.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [
+    "softkleenex/s6e2-artifacts"
+  ],
+  "competition_sources": [
+    "playground-series-s6e2"
+  ],
+  "kernel_sources": []
+}

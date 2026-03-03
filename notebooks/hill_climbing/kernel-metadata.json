@@ -1,0 +1,17 @@
+{
+  "id": "softkleenex/hill-climbing-optimization",
+  "title": "Hill Climbing Optimization",
+  "code_file": "hill_climbing.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": [
+    "softkleenex/s6e2-artifacts"
+  ],
+  "competition_sources": [
+    "playground-series-s6e2"
+  ],
+  "kernel_sources": []
+}
