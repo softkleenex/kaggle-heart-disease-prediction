@@ -39,6 +39,42 @@
 
 ---
 
+## 🛠 Tech Stack
+*   **Languages & Frameworks**: Python 3.10+, Pandas, Numpy, Scikit-Learn
+*   **Machine Learning**: CatBoost, LightGBM, XGBoost, PyTorch (Simple NN)
+*   **Optimization**: SciPy (`scipy.optimize.minimize`), Optuna
+*   **MLOps & Tools**: Kaggle CLI, Git, Gemini CLI
+
+---
+
+## 🚀 Quick Start / Reproducibility
+
+이 프로젝트를 로컬 환경 또는 본인의 Kaggle 계정에서 재현하는 방법입니다.
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/softkleenex/kaggle-s6e2-playground.git
+   cd kaggle-s6e2-playground
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+   *(Ensure Kaggle API is configured in `~/.kaggle/kaggle.json`)*
+
+3. **Fetch Data**:
+   ```bash
+   kaggle competitions download -c playground-series-s6e2 -p data/
+   unzip data/playground-series-s6e2.zip -d data/
+   ```
+
+4. **Run Training Pipeline (Local or Kaggle Cloud)**:
+   *   **Local**: `python src/models/train_catboost.py`
+   *   **Kaggle Cloud (Recommended)**: `kaggle kernels push -p notebooks/kaggle_runner`
+
+---
+
 ## 💡 Retrospective (사후 분석 및 피드백)
 
 이 프로젝트를 진행하며 겪은 실패와 교훈은 다음과 같습니다. 자세한 분석은 [Retrospective Report](docs/retrospective_analysis.md)에서 확인할 수 있습니다.
