@@ -5,3 +5,4 @@ submissions/
 __pycache__/
 .ipynb_checkpoints/
 catboost_info/
+kaggle.json
