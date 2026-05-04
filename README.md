@@ -53,8 +53,8 @@
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/softkleenex/kaggle-s6e2-playground.git
-   cd kaggle-s6e2-playground
+   git clone https://github.com/softkleenex/kaggle-heart-disease-prediction.git
+   cd kaggle-heart-disease-prediction
    ```
 
 2. **Install dependencies**:
