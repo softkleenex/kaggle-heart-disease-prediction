@@ -107,3 +107,11 @@
 
 ---
 *Developed & MLOps automated via Gemini CLI*
+
+<!-- BLOG-URL:START -->
+
+## Blog
+
+- Blog note: [Kaggle Playground Series S6E2 - Heart Disease Prediction 🫀](https://softkleenex.github.io/coding_training/kaggle/kaggle-heart-disease-prediction)
+
+<!-- BLOG-URL:END -->
